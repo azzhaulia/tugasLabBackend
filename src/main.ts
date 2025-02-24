@@ -10,12 +10,14 @@ async function bootstrap() {
   app.use(cookieParser());
 
   app.enableCors({
-    origin:"*"
-  })
+    origin: '*',
+  });
 
-  app.useGlobalPipes(new ValidationPipe({
-    transform : true
-  }))
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('Latihan Nest JS Kelas - B')
@@ -28,8 +30,7 @@ async function bootstrap() {
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, documentFactory);
 
-  await app.listen(process.env.PORT ?? 3000);
-  
+  await app.listen(process.env.PORT ?? 3002);
 }
 
 bootstrap();
